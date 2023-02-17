@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+}
+
+div.main {
+  width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.row {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid gray;
+  background-color: rgb(246, 246, 246)
+}
+
+div.row label {
+  flex: 2;
+  text-align: left;
+}
+
+div.row input {
+  flex: 5;
+}
+
+.btn {
+  padding-left: 40px;
+  padding-right: 40px;
+}
