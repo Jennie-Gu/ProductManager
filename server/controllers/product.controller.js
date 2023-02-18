@@ -12,3 +12,21 @@ module.exports.createProduct = (request, response) => {
         .catch(err => response.json(err));
 }
 
+module.exports.getProducts = (req, res) => {
+    Product.find()
+        .then((allProducts) => {
+            res.json({ products: allProducts })
+        })
+        .catch((err) => {
+            res.json({ message: 'Something went wrong', error: err })
+        });
+}
+
+module.exports.getProductDetails = (req, res) => {
+    Product.findOne({ _id: req.params.id })
+        .then(oneSingleProduct => {
+            res.json({ product: oneSingleProduct })
+        })
+        .catch((err) => {
+            res.json({ message: 'Something went wrong', error: err })
+        });}

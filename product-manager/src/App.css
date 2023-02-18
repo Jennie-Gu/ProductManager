@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.detail {
+  text-align: center;
+  padding: 150px;
+}
+
 div.main {
   width: 360px;
   margin-left: auto;
@@ -28,4 +33,13 @@ div.row input {
 .btn {
   padding-left: 40px;
   padding-right: 40px;
+}
+
+hr.separate {
+  margin-top: 40px;
+}
+
+li.product {
+  list-style: none;
+  margin-bottom: 20px;
 }
