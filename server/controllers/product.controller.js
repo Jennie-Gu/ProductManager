@@ -30,3 +30,17 @@ module.exports.getProductDetails = (req, res) => {
         .catch((err) => {
             res.json({ message: 'Something went wrong', error: err })
         });}
+
+module.exports.updateProduct = (request, response) => {
+    Product.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
+                .then(updatedProduct => response.json(updatedProduct))
+                .catch(err => response.json(err))
+        }
+        
+module.exports.deleteProduct = (request, response) => {
+    Product.deleteOne({ _id: request.params.id }) //note: "id" here MUST match id in corresponding route
+                .then(deleteConfirmation => response.json(deleteConfirmation))
+                .catch(err => response.json(err))
+        }
+        
+        

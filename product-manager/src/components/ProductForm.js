@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 const ProductForm = () => {
     //keep track of what is being typed via useState hook
@@ -43,6 +44,18 @@ const ProductForm = () => {
             .catch(err=>console.log(err))
     }
     
+    const deleteProduct = (id) => {
+        axios.delete('http://localhost:8000/api/delete/' + id)
+            .then(res => {
+                console.log(res); // always console log to get used to tracking your data!
+                setProductList(  
+                [ 
+                ...productList.filter(product => product._id != id), 
+              ]);
+            })
+            .catch(err => console.log(err))
+    }
+
     return (
         <div class="main">
         <form onSubmit={onSubmitHandler}>
@@ -66,8 +79,20 @@ const ProductForm = () => {
         <h2>All Products:</h2>
         <ul class="product-list">
       {
-                    productList.map( (product,) => 
-                        <li class='product'><a href={'http://localhost:3000/' + product._id}>{product.title}</a></li>
+                    productList.map( (product, index) => 
+                        <li class='product'>
+                        <Link to={"/" + product._id}>
+                            {product.title}
+                        </Link>
+                            |
+                        <Link to={"/edit/" + product._id}>
+                           Edit
+                        </Link>
+                            |
+                        <button onClick={(e)=>{deleteProduct(product._id)}}>
+                            Delete
+                        </button>
+                            </li>
                     )
                 }
       </ul>
